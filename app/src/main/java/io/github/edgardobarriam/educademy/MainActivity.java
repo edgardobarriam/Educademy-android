@@ -1,5 +1,6 @@
 package io.github.edgardobarriam.educademy;
 
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
@@ -17,7 +18,13 @@ import android.widget.ListView;
 import io.github.edgardobarriam.educademy.adapter.NavDrawerItemAdapter;
 import io.github.edgardobarriam.educademy.model.NavDrawerItemModel;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity
+        extends
+            AppCompatActivity
+        implements
+            InicioFragment.OnFragmentInteractionListener,
+            InstitucionesFragment.OnFragmentInteractionListener,
+            CarrerasFragment.OnFragmentInteractionListener {
 
     private String[] navigationDrawerItemTitles;
     private DrawerLayout drawerLayout;
@@ -39,7 +46,10 @@ public class MainActivity extends AppCompatActivity {
 
         initToolbar();
         initNavigationDrawer();
+        initHomeFragment();
     }
+
+
 
     void initToolbar(){
         toolbar = findViewById(R.id.toolbar);
@@ -62,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         drawerList.setAdapter(adapter);
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
         drawerLayout = findViewById(R.id.drawer_layout);
-        drawerLayout.setDrawerListener(drawerToggle);
+        drawerLayout.addDrawerListener(drawerToggle);
         setupDrawerToggle();
     }
 
@@ -70,6 +80,12 @@ public class MainActivity extends AppCompatActivity {
         drawerToggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.app_name, R.string.app_name);
         //This is necessary to change the icon of the Drawer Toggle upon state change.
         drawerToggle.syncState();
+    }
+
+    private void initHomeFragment() {
+        Fragment fragment = new InicioFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_container, fragment).commit();
     }
 
     @Override
@@ -103,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
 
         @Override
@@ -117,13 +134,13 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                //fragment = new ConnectFragment();
+                fragment = new InicioFragment();
                 break;
             case 1:
-                //fragment = new FixturesFragment();
+                fragment = new InstitucionesFragment();
                 break;
             case 2:
-                //fragment = new TableFragment();
+                fragment = new CarrerasFragment();
                 break;
 
             default:
@@ -142,5 +159,10 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Log.e("MainActivity", "Error in creating fragment");
         }
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
