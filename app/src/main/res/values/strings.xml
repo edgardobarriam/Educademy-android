@@ -5,6 +5,7 @@
         <item>Inicio</item>
         <item>Instituciones</item>
         <item>Carreras</item>
+        <item>Salir</item>
     </string-array>
 
     <!--Images descriptions-->
@@ -12,4 +13,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="universidades">Universidades</string>
+    <string name="institutos_profesionales">Institutos Profesionales</string>
+    <string name="cfts">Centros de Formación Técnica</string>
 </resources>

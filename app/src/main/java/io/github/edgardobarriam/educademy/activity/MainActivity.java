@@ -1,4 +1,4 @@
-package io.github.edgardobarriam.educademy;
+package io.github.edgardobarriam.educademy.activity;
 
 import android.net.Uri;
 import android.support.v4.app.Fragment;
@@ -15,7 +15,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import io.github.edgardobarriam.educademy.R;
 import io.github.edgardobarriam.educademy.adapter.NavDrawerItemAdapter;
+import io.github.edgardobarriam.educademy.fragment.CarrerasFragment;
+import io.github.edgardobarriam.educademy.fragment.InicioFragment;
+import io.github.edgardobarriam.educademy.fragment.InstitucionesFragment;
+import io.github.edgardobarriam.educademy.fragment.ListaInstitucionesFragment;
 import io.github.edgardobarriam.educademy.model.NavDrawerItemModel;
 
 public class MainActivity
@@ -24,7 +29,8 @@ public class MainActivity
         implements
             InicioFragment.OnFragmentInteractionListener,
             InstitucionesFragment.OnFragmentInteractionListener,
-            CarrerasFragment.OnFragmentInteractionListener {
+            CarrerasFragment.OnFragmentInteractionListener,
+            ListaInstitucionesFragment.OnFragmentInteractionListener{
 
     private String[] navigationDrawerItemTitles;
     private DrawerLayout drawerLayout;
@@ -49,10 +55,8 @@ public class MainActivity
         initHomeFragment();
     }
 
-
-
     void initToolbar(){
-        toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.mainToolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -63,10 +67,11 @@ public class MainActivity
         drawerLayout = findViewById(R.id.drawer_layout);
         drawerList = findViewById(R.id.nav_drawer);
 
-        NavDrawerItemModel[] drawerItem = new NavDrawerItemModel[3];
+        NavDrawerItemModel[] drawerItem = new NavDrawerItemModel[4];
         drawerItem[0] = new NavDrawerItemModel(R.drawable.ic_home, navigationDrawerItemTitles[0]);
         drawerItem[1] = new NavDrawerItemModel(R.drawable.ic_instituciones, navigationDrawerItemTitles[1]);
         drawerItem[2] = new NavDrawerItemModel(R.drawable.ic_carreras, navigationDrawerItemTitles[2]);
+        drawerItem[3] = new NavDrawerItemModel(R.drawable.ic_exit, navigationDrawerItemTitles[3]);
 
         NavDrawerItemAdapter adapter = new NavDrawerItemAdapter(this, R.layout.list_view_item_row, drawerItem);
         drawerList.setAdapter(adapter);
@@ -85,7 +90,9 @@ public class MainActivity
     private void initHomeFragment() {
         Fragment fragment = new InicioFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_container, fragment).commit();
+        fragmentManager.beginTransaction()
+                       .replace(R.id.content_container, fragment)
+                       .commit();
     }
 
     @Override
@@ -119,6 +126,10 @@ public class MainActivity
         }
     }
 
+    @Override
+    public void onFragmentInteraction(String uri) {
+
+    }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
 
@@ -142,14 +153,17 @@ public class MainActivity
             case 2:
                 fragment = new CarrerasFragment();
                 break;
-
+            case 3:
+                finish();
             default:
                 break;
         }
 
         if (fragment != null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.content_container, fragment).commit();
+            fragmentManager.beginTransaction()
+                           .replace(R.id.content_container, fragment)
+                           .commit();
 
             drawerList.setItemChecked(position, true);
             drawerList.setSelection(position);
