@@ -62,8 +62,10 @@ public class ListaInstitucionesFragment extends Fragment {
         if (getArguments() != null) {
             codigoTipoInstituciones = getArguments().getInt(TIPO_INSTITUCIONES);
             // TODO: Usar codigo tipo para el webservice
+
         }
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -84,9 +86,10 @@ public class ListaInstitucionesFragment extends Fragment {
                 R.drawable.utfsm_logo,
                 "Universidad Técnica Federico Santa María",
                 "UTFSM",
-                "#3F51B5"));
+                "#3F51B5",
+                "aaa"));
 
-        sampleListInstituciones.add(new Institucion(R.drawable.ic_carreras, "Universidad de Chile", "UCh","#3F51B5"));
+        sampleListInstituciones.add(new Institucion(R.drawable.ic_carreras, "Universidad de Chile", "UCh","#3F51B5","a"));
     }
 
     private void initAdapter() {

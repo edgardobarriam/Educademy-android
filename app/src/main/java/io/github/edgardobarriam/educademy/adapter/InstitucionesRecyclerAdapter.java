@@ -34,7 +34,7 @@ public class InstitucionesRecyclerAdapter  extends RecyclerView.Adapter<Instituc
 
     @Override
     public void onBindViewHolder(InstitucionViewHolder holder, int position) {
-        holder.logoInstitucion.setImageResource(listaInstituciones.get(position).idLogo);
+        holder.logoInstitucion.setImageResource(listaInstituciones.get(position).idInstitucion);
         holder.nombreInstitucion.setText(listaInstituciones.get(position).nombre);
         holder.nombreCortoInstitucion.setText(listaInstituciones.get(position).nombreCorto);
         holder.bind(listaInstituciones.get(position), onItemClickListener);
