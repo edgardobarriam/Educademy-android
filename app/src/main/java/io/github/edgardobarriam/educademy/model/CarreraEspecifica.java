@@ -48,9 +48,9 @@ public class CarreraEspecifica {
     @SerializedName("matPsuCarreraEsp")
     @Expose
     private String matPsuCarreraEsp;
-    @SerializedName("cienPsuCarreraEsp")
+    @SerializedName("ciePsuCarreraEsp")
     @Expose
-    private String cienPsuCarreraEsp;
+    private String ciePsuCarreraEsp;
     @SerializedName("hisPsuCarreraEsp")
     @Expose
     private String hisPsuCarreraEsp;
@@ -67,7 +67,7 @@ public class CarreraEspecifica {
     @Expose
     private List<Semestre> semestresCarreraEsp = null;
 
-    public CarreraEspecifica(String nombreCarreraEsp, String areaConocimientoCarreraEsp, String jornadaCarreraEsp, String modalidadCarreraEsp, String descCarreraEsp, String arancelCarreraEsp, String vacantesCarreraEsp, Boolean isPsuCarreraEsp, String primerPsuCarreraEsp, String ultimoPsuCarreraEsp, String lenPsuCarreraEsp, String matPsuCarreraEsp, String cienPsuCarreraEsp, String hisPsuCarreraEsp, String nemPsuCarreraEsp, String ranPsuCarreraEsp, Boolean isAcreditadaCarreraEsp, List<Semestre> semestresCarreraEsp) {
+    public CarreraEspecifica(String nombreCarreraEsp, String areaConocimientoCarreraEsp, String jornadaCarreraEsp, String modalidadCarreraEsp, String descCarreraEsp, String arancelCarreraEsp, String vacantesCarreraEsp, Boolean isPsuCarreraEsp, String primerPsuCarreraEsp, String ultimoPsuCarreraEsp, String lenPsuCarreraEsp, String matPsuCarreraEsp, String ciePsuCarreraEsp, String hisPsuCarreraEsp, String nemPsuCarreraEsp, String ranPsuCarreraEsp, Boolean isAcreditadaCarreraEsp, List<Semestre> semestresCarreraEsp) {
         this.nombreCarreraEsp = nombreCarreraEsp;
         this.areaConocimientoCarreraEsp = areaConocimientoCarreraEsp;
         this.jornadaCarreraEsp = jornadaCarreraEsp;
@@ -80,7 +80,7 @@ public class CarreraEspecifica {
         this.ultimoPsuCarreraEsp = ultimoPsuCarreraEsp;
         this.lenPsuCarreraEsp = lenPsuCarreraEsp;
         this.matPsuCarreraEsp = matPsuCarreraEsp;
-        this.cienPsuCarreraEsp = cienPsuCarreraEsp;
+        this.ciePsuCarreraEsp = ciePsuCarreraEsp;
         this.hisPsuCarreraEsp = hisPsuCarreraEsp;
         this.nemPsuCarreraEsp = nemPsuCarreraEsp;
         this.ranPsuCarreraEsp = ranPsuCarreraEsp;
@@ -184,12 +184,12 @@ public class CarreraEspecifica {
         this.matPsuCarreraEsp = matPsuCarreraEsp;
     }
 
-    public String getCienPsuCarreraEsp() {
-        return cienPsuCarreraEsp;
+    public String getCiePsuCarreraEsp() {
+        return ciePsuCarreraEsp;
     }
 
-    public void setCienPsuCarreraEsp(String cienPsuCarreraEsp) {
-        this.cienPsuCarreraEsp = cienPsuCarreraEsp;
+    public void setCiePsuCarreraEsp(String ciePsuCarreraEsp) {
+        this.ciePsuCarreraEsp = ciePsuCarreraEsp;
     }
 
     public String getHisPsuCarreraEsp() {

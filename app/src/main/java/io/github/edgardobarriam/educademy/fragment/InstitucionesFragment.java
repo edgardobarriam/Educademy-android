@@ -67,7 +67,7 @@ public class InstitucionesFragment extends Fragment {
         crvUniversidades.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ListaInstitucionesFragment newFragment = ListaInstitucionesFragment.newInstance(1);
+                ListaInstitucionesFragment newFragment = ListaInstitucionesFragment.newInstance("u");
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.content_container, newFragment);
                 fragmentTransaction.addToBackStack(null);
@@ -78,7 +78,7 @@ public class InstitucionesFragment extends Fragment {
         crvInstitutosProfesionales.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ListaInstitucionesFragment newFragment = ListaInstitucionesFragment.newInstance(2);
+                ListaInstitucionesFragment newFragment = ListaInstitucionesFragment.newInstance("ip");
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.content_container,newFragment);
                 fragmentTransaction.addToBackStack(null);
@@ -89,7 +89,7 @@ public class InstitucionesFragment extends Fragment {
         crvCFTS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ListaInstitucionesFragment newFragment = ListaInstitucionesFragment.newInstance(3);
+                ListaInstitucionesFragment newFragment = ListaInstitucionesFragment.newInstance("cft");
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.content_container,newFragment);
                 fragmentTransaction.addToBackStack(null);

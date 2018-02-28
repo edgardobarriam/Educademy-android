@@ -11,17 +11,17 @@ import android.widget.TextView;
 import java.util.List;
 
 import io.github.edgardobarriam.educademy.R;
-import io.github.edgardobarriam.educademy.model.Institucion;
+import io.github.edgardobarriam.educademy.model.InstitucionAPI;
 
 /**
  * Created by Edgardo Barría Melián on 03-12-2017.
  */
 
 public class InstitucionesRecyclerAdapter  extends RecyclerView.Adapter<InstitucionesRecyclerAdapter.InstitucionViewHolder>{
-    private final List<Institucion> listaInstituciones;
+    private final List<InstitucionAPI> listaInstituciones;
     private final OnItemClickListener onItemClickListener;
 
-    public InstitucionesRecyclerAdapter(List<Institucion> listaInstituciones, OnItemClickListener listener) {
+    public InstitucionesRecyclerAdapter(List<InstitucionAPI> listaInstituciones, OnItemClickListener listener) {
         this.listaInstituciones = listaInstituciones;
         this.onItemClickListener = listener;
     }
@@ -34,9 +34,9 @@ public class InstitucionesRecyclerAdapter  extends RecyclerView.Adapter<Instituc
 
     @Override
     public void onBindViewHolder(InstitucionViewHolder holder, int position) {
-        holder.logoInstitucion.setImageResource(listaInstituciones.get(position).idInstitucion);
-        holder.nombreInstitucion.setText(listaInstituciones.get(position).nombre);
-        holder.nombreCortoInstitucion.setText(listaInstituciones.get(position).nombreCorto);
+        // holder.logoInstitucion.setImageResource(listaInstituciones.get(position).getId());
+        holder.nombreInstitucion.setText(listaInstituciones.get(position).getNombreInstitucion());
+        holder.nombreCortoInstitucion.setText(listaInstituciones.get(position).getNombreCortoInstitucion());
         holder.bind(listaInstituciones.get(position), onItemClickListener);
 
     }
@@ -59,10 +59,9 @@ public class InstitucionesRecyclerAdapter  extends RecyclerView.Adapter<Instituc
             logoInstitucion = itemView.findViewById(R.id.imvLogoInstitucion);
             nombreInstitucion = itemView.findViewById(R.id.txvNombreInstitucion);
             nombreCortoInstitucion = itemView.findViewById(R.id.txvNombreCortoInstitucion);
-
         }
 
-        public void bind(final Institucion item, final OnItemClickListener listener) {
+        public void bind(final InstitucionAPI item, final OnItemClickListener listener) {
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
@@ -73,7 +72,7 @@ public class InstitucionesRecyclerAdapter  extends RecyclerView.Adapter<Instituc
     }
 
     public interface OnItemClickListener {
-        void onItemClick(Institucion item);
+        void onItemClick(InstitucionAPI item);
     }
 
 }

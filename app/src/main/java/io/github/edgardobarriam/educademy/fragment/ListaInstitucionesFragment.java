@@ -11,14 +11,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import io.github.edgardobarriam.educademy.R;
 import io.github.edgardobarriam.educademy.activity.FichaInstitucionActivity;
 import io.github.edgardobarriam.educademy.adapter.InstitucionesRecyclerAdapter;
+import io.github.edgardobarriam.educademy.model.ApiResponse;
 import io.github.edgardobarriam.educademy.model.Institucion;
+import io.github.edgardobarriam.educademy.model.InstitucionAPI;
+import io.github.edgardobarriam.educademy.request.ApiClient;
+import io.github.edgardobarriam.educademy.request.ApiInterface;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
@@ -30,13 +36,13 @@ import io.github.edgardobarriam.educademy.model.Institucion;
  * create an instance of this fragment.
  */
 public class ListaInstitucionesFragment extends Fragment {
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String TIPO_INSTITUCIONES = "tipo_instituciones";
 
-    private int codigoTipoInstituciones;
+    private String strTipoInstituciones;
     private OnFragmentInteractionListener mListener;
     private RecyclerView recyclerViewInstituciones;
     private ArrayList<Institucion> sampleListInstituciones;
+    private ArrayList<InstitucionAPI> listInstituciones;
 
     public ListaInstitucionesFragment() {
         // Required empty public constructor
@@ -48,10 +54,10 @@ public class ListaInstitucionesFragment extends Fragment {
      *
      * @return A new instance of fragment ListaInstitucionesFragment.
      */
-    public static ListaInstitucionesFragment newInstance(int codigoTipoInstituciones) {
+    public static ListaInstitucionesFragment newInstance(String codigoTipoInstituciones) {
         ListaInstitucionesFragment fragment = new ListaInstitucionesFragment();
         Bundle args = new Bundle();
-        args.putInt(TIPO_INSTITUCIONES,codigoTipoInstituciones);
+        args.putString(TIPO_INSTITUCIONES,codigoTipoInstituciones);
         fragment.setArguments(args);
         return fragment;
     }
@@ -60,9 +66,7 @@ public class ListaInstitucionesFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            codigoTipoInstituciones = getArguments().getInt(TIPO_INSTITUCIONES);
-            // TODO: Usar codigo tipo para el webservice
-
+            strTipoInstituciones = getArguments().getString(TIPO_INSTITUCIONES);
         }
     }
 
@@ -75,32 +79,32 @@ public class ListaInstitucionesFragment extends Fragment {
         recyclerViewInstituciones = view.findViewById(R.id.rcvListaInstituciones);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerViewInstituciones.setLayoutManager(linearLayoutManager);
-        initSampleData();
-        initAdapter();
-        return view;
-    }
 
-    private void initSampleData() {
-        sampleListInstituciones = new ArrayList<>();
-        sampleListInstituciones.add(new Institucion(
-                R.drawable.utfsm_logo,
-                "Universidad Técnica Federico Santa María",
-                "UTFSM",
-                "#3F51B5",
-                "aaa"));
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
 
-        sampleListInstituciones.add(new Institucion(R.drawable.ic_carreras, "Universidad de Chile", "UCh","#3F51B5","a"));
-    }
-
-    private void initAdapter() {
-        InstitucionesRecyclerAdapter adapter = new InstitucionesRecyclerAdapter(
-                sampleListInstituciones, new InstitucionesRecyclerAdapter.OnItemClickListener() {
+        Call<ApiResponse> call = apiService.getInstituciones(strTipoInstituciones);
+        call.enqueue(new Callback<ApiResponse>() {
             @Override
-            public void onItemClick(Institucion item) {
-                startActivity(new Intent(getContext(), FichaInstitucionActivity.class));
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+
+                InstitucionesRecyclerAdapter adapter = new InstitucionesRecyclerAdapter(
+                        response.body().getListaInstituciones(), new InstitucionesRecyclerAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(InstitucionAPI item) {
+                        startActivity(new Intent(getContext(), FichaInstitucionActivity.class));
+                    }
+                });
+                recyclerViewInstituciones.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+                Log.d("test", t.toString());
             }
         });
-        recyclerViewInstituciones.setAdapter(adapter);
+        /*initSampleData();
+        initAdapter();*/
+        return view;
     }
 
     @Override
