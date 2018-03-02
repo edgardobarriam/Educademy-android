@@ -1,5 +1,8 @@
 package io.github.edgardobarriam.educademy.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -9,7 +12,7 @@ import java.util.List;
  * Created by edgar on 27-02-2018.
  */
 
-public class CarreraEspecifica {
+public class CarreraEspecifica implements Parcelable{
 
 
     @SerializedName("nombreCarreraEsp")
@@ -87,6 +90,68 @@ public class CarreraEspecifica {
         this.isAcreditadaCarreraEsp = isAcreditadaCarreraEsp;
         this.semestresCarreraEsp = semestresCarreraEsp;
     }
+
+    protected CarreraEspecifica(Parcel in) {
+        nombreCarreraEsp = in.readString();
+        areaConocimientoCarreraEsp = in.readString();
+        jornadaCarreraEsp = in.readString();
+        modalidadCarreraEsp = in.readString();
+        descCarreraEsp = in.readString();
+        arancelCarreraEsp = in.readString();
+        vacantesCarreraEsp = in.readString();
+        byte tmpIsPsuCarreraEsp = in.readByte();
+        isPsuCarreraEsp = tmpIsPsuCarreraEsp == 0 ? null : tmpIsPsuCarreraEsp == 1;
+        primerPsuCarreraEsp = in.readString();
+        ultimoPsuCarreraEsp = in.readString();
+        lenPsuCarreraEsp = in.readString();
+        matPsuCarreraEsp = in.readString();
+        ciePsuCarreraEsp = in.readString();
+        hisPsuCarreraEsp = in.readString();
+        nemPsuCarreraEsp = in.readString();
+        ranPsuCarreraEsp = in.readString();
+        byte tmpIsAcreditadaCarreraEsp = in.readByte();
+        isAcreditadaCarreraEsp = tmpIsAcreditadaCarreraEsp == 0 ? null : tmpIsAcreditadaCarreraEsp == 1;
+        semestresCarreraEsp = in.createTypedArrayList(Semestre.CREATOR);
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(nombreCarreraEsp);
+        dest.writeString(areaConocimientoCarreraEsp);
+        dest.writeString(jornadaCarreraEsp);
+        dest.writeString(modalidadCarreraEsp);
+        dest.writeString(descCarreraEsp);
+        dest.writeString(arancelCarreraEsp);
+        dest.writeString(vacantesCarreraEsp);
+        dest.writeByte((byte) (isPsuCarreraEsp == null ? 0 : isPsuCarreraEsp ? 1 : 2));
+        dest.writeString(primerPsuCarreraEsp);
+        dest.writeString(ultimoPsuCarreraEsp);
+        dest.writeString(lenPsuCarreraEsp);
+        dest.writeString(matPsuCarreraEsp);
+        dest.writeString(ciePsuCarreraEsp);
+        dest.writeString(hisPsuCarreraEsp);
+        dest.writeString(nemPsuCarreraEsp);
+        dest.writeString(ranPsuCarreraEsp);
+        dest.writeByte((byte) (isAcreditadaCarreraEsp == null ? 0 : isAcreditadaCarreraEsp ? 1 : 2));
+        dest.writeTypedList(semestresCarreraEsp);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<CarreraEspecifica> CREATOR = new Creator<CarreraEspecifica>() {
+        @Override
+        public CarreraEspecifica createFromParcel(Parcel in) {
+            return new CarreraEspecifica(in);
+        }
+
+        @Override
+        public CarreraEspecifica[] newArray(int size) {
+            return new CarreraEspecifica[size];
+        }
+    };
 
     public String getNombreCarreraEsp() {
         return nombreCarreraEsp;

@@ -8,6 +8,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,20 +22,35 @@ import io.github.edgardobarriam.educademy.R;
 import io.github.edgardobarriam.educademy.fragment.CarrerasInstitucionFragment;
 import io.github.edgardobarriam.educademy.fragment.ResumenInstitucionFragment;
 import io.github.edgardobarriam.educademy.fragment.SedesInstitucionFragment;
+import io.github.edgardobarriam.educademy.model.Institucion;
 
 public class FichaInstitucionActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private ImageView imgLogoInstitucion;
+    private TextView txtNombreInstitucion;
 
+
+    private Institucion institucion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ficha_institucion);
 
+        institucion = getIntent().getParcelableExtra("Institucion");
+        imgLogoInstitucion = findViewById(R.id.imvLogoInstitucionFicha);
+        txtNombreInstitucion = findViewById(R.id.txvNombreInstitucionFicha);
+        initInstitucionData();
         initToolbar();
         initViewPager();
 
+    }
+
+    private void initInstitucionData() {
+        Picasso.with(FichaInstitucionActivity.this).load(institucion.getUrlLogoInstitucion()).into(imgLogoInstitucion);
+        txtNombreInstitucion.setText(institucion.getNombreInstitucion());
+        // txtNombreCortoInstitucion.setText(institucion.getNombreCortoInstitucion());
     }
 
     private void initViewPager() {
@@ -55,7 +76,7 @@ public class FichaInstitucionActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        setTitle("UTFSM");
+        setTitle(institucion.getNombreCortoInstitucion());
     }
 
     @Override

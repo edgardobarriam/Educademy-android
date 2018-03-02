@@ -30,18 +30,17 @@
             tools:layout_editor_absoluteY="56dp">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/imvLogoInstitucionFicha"
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/utfsm_logo" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/txvNombreInstitucionFicha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Universidad Técnica Federico Santa María"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp" />
@@ -61,14 +60,14 @@
                 android:text="Resumen" />
 
             <android.support.design.widget.TabItem
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Sedes" />
+                android:layout_height="wrap_content"
+                android:text="Noticias" />
 
             <android.support.design.widget.TabItem
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Carreras" />
+                android:layout_height="wrap_content"
+                android:text="Sedes" />
         </android.support.design.widget.TabLayout>
     </android.support.design.widget.AppBarLayout>
 

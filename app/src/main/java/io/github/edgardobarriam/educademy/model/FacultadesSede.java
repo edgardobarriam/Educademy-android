@@ -1,5 +1,8 @@
 package io.github.edgardobarriam.educademy.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -9,7 +12,7 @@ import java.util.List;
  * Created by edgar on 27-02-2018.
  */
 
-public class FacultadesSede {
+public class FacultadesSede implements Parcelable{
     @SerializedName("nombreFacultad")
     @Expose
     private String nombreFacultad;
@@ -21,4 +24,32 @@ public class FacultadesSede {
         this.nombreFacultad = nombreFacultad;
         this.carrerasFacultad = carrerasFacultad;
     }
+
+    protected FacultadesSede(Parcel in) {
+        nombreFacultad = in.readString();
+        carrerasFacultad = in.createTypedArrayList(CarreraEspecifica.CREATOR);
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(nombreFacultad);
+        dest.writeTypedList(carrerasFacultad);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<FacultadesSede> CREATOR = new Creator<FacultadesSede>() {
+        @Override
+        public FacultadesSede createFromParcel(Parcel in) {
+            return new FacultadesSede(in);
+        }
+
+        @Override
+        public FacultadesSede[] newArray(int size) {
+            return new FacultadesSede[size];
+        }
+    };
 }

@@ -24,13 +24,13 @@
 
             <ImageView
                 android:id="@+id/imvLogoInstitucion"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:contentDescription="Logo Institución"
-                android:scaleType="centerCrop"/>
+                android:scaleType="fitCenter"/>
 
             <TextView
                 android:id="@+id/txvNombreInstitucion"

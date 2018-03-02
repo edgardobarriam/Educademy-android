@@ -1,5 +1,9 @@
 package io.github.edgardobarriam.educademy.adapter;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,20 +12,25 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
+
 import java.util.List;
 
 import io.github.edgardobarriam.educademy.R;
-import io.github.edgardobarriam.educademy.model.InstitucionAPI;
+import io.github.edgardobarriam.educademy.model.Institucion;
 
 /**
  * Created by Edgardo Barría Melián on 03-12-2017.
  */
 
 public class InstitucionesRecyclerAdapter  extends RecyclerView.Adapter<InstitucionesRecyclerAdapter.InstitucionViewHolder>{
-    private final List<InstitucionAPI> listaInstituciones;
+    private final List<Institucion> listaInstituciones;
     private final OnItemClickListener onItemClickListener;
+    private Context context;
 
-    public InstitucionesRecyclerAdapter(List<InstitucionAPI> listaInstituciones, OnItemClickListener listener) {
+    public InstitucionesRecyclerAdapter(Context context, List<Institucion> listaInstituciones, OnItemClickListener listener) {
+        this.context = context;
         this.listaInstituciones = listaInstituciones;
         this.onItemClickListener = listener;
     }
@@ -33,11 +42,15 @@ public class InstitucionesRecyclerAdapter  extends RecyclerView.Adapter<Instituc
     }
 
     @Override
-    public void onBindViewHolder(InstitucionViewHolder holder, int position) {
-        // holder.logoInstitucion.setImageResource(listaInstituciones.get(position).getId());
-        holder.nombreInstitucion.setText(listaInstituciones.get(position).getNombreInstitucion());
-        holder.nombreCortoInstitucion.setText(listaInstituciones.get(position).getNombreCortoInstitucion());
-        holder.bind(listaInstituciones.get(position), onItemClickListener);
+    public void onBindViewHolder(final InstitucionViewHolder holder, int position) {
+        final Institucion institucionBindeada = listaInstituciones.get(position);
+
+        // Render Logo
+        Picasso.with(context).load(institucionBindeada.getUrlLogoInstitucion()).into(holder.logoInstitucion);
+
+        holder.nombreInstitucion.setText(institucionBindeada.getNombreInstitucion());
+        holder.nombreCortoInstitucion.setText(institucionBindeada.getNombreCortoInstitucion());
+        holder.bind(institucionBindeada, onItemClickListener);
 
     }
 
@@ -61,7 +74,7 @@ public class InstitucionesRecyclerAdapter  extends RecyclerView.Adapter<Instituc
             nombreCortoInstitucion = itemView.findViewById(R.id.txvNombreCortoInstitucion);
         }
 
-        public void bind(final InstitucionAPI item, final OnItemClickListener listener) {
+        public void bind(final Institucion item, final OnItemClickListener listener) {
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
@@ -72,7 +85,7 @@ public class InstitucionesRecyclerAdapter  extends RecyclerView.Adapter<Instituc
     }
 
     public interface OnItemClickListener {
-        void onItemClick(InstitucionAPI item);
+        void onItemClick(Institucion item);
     }
 
 }

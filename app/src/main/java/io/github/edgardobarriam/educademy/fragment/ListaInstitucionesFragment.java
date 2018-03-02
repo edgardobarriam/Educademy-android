@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,7 +20,6 @@ import io.github.edgardobarriam.educademy.activity.FichaInstitucionActivity;
 import io.github.edgardobarriam.educademy.adapter.InstitucionesRecyclerAdapter;
 import io.github.edgardobarriam.educademy.model.ApiResponse;
 import io.github.edgardobarriam.educademy.model.Institucion;
-import io.github.edgardobarriam.educademy.model.InstitucionAPI;
 import io.github.edgardobarriam.educademy.request.ApiClient;
 import io.github.edgardobarriam.educademy.request.ApiInterface;
 import retrofit2.Call;
@@ -41,8 +41,7 @@ public class ListaInstitucionesFragment extends Fragment {
     private String strTipoInstituciones;
     private OnFragmentInteractionListener mListener;
     private RecyclerView recyclerViewInstituciones;
-    private ArrayList<Institucion> sampleListInstituciones;
-    private ArrayList<InstitucionAPI> listInstituciones;
+    private ArrayList<Institucion> listInstituciones;
 
     public ListaInstitucionesFragment() {
         // Required empty public constructor
@@ -85,21 +84,22 @@ public class ListaInstitucionesFragment extends Fragment {
         Call<ApiResponse> call = apiService.getInstituciones(strTipoInstituciones);
         call.enqueue(new Callback<ApiResponse>() {
             @Override
-            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+            public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
 
                 InstitucionesRecyclerAdapter adapter = new InstitucionesRecyclerAdapter(
-                        response.body().getListaInstituciones(), new InstitucionesRecyclerAdapter.OnItemClickListener() {
+                        getContext(),response.body().getListaInstituciones(), new InstitucionesRecyclerAdapter.OnItemClickListener() {
                     @Override
-                    public void onItemClick(InstitucionAPI item) {
-                        startActivity(new Intent(getContext(), FichaInstitucionActivity.class));
+                    public void onItemClick(Institucion item) {
+                        Intent intent = new Intent(getContext(), FichaInstitucionActivity.class);
+                        intent.putExtra("Institucion",item);
+                        startActivity(intent);
                     }
                 });
                 recyclerViewInstituciones.setAdapter(adapter);
             }
 
             @Override
-            public void onFailure(Call<ApiResponse> call, Throwable t) {
-                Log.d("test", t.toString());
+            public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
             }
         });
         /*initSampleData();

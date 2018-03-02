@@ -12,13 +12,13 @@ import java.util.List;
 public class ApiResponse {
     @Expose
     @SerializedName("resultado")
-    private List<InstitucionAPI> listaInstituciones;
+    private List<Institucion> listaInstituciones;
 
-    public List<InstitucionAPI> getListaInstituciones() {
+    public List<Institucion> getListaInstituciones() {
         return listaInstituciones;
     }
 
-    public void setListaInstituciones(List<InstitucionAPI> listaInstituciones) {
+    public void setListaInstituciones(List<Institucion> listaInstituciones) {
         this.listaInstituciones = listaInstituciones;
     }
 }
