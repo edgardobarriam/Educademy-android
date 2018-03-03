@@ -2,12 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="io.github.edgardobarriam.educademy.fragment.SedesInstitucionFragment">
+    tools:context="io.github.edgardobarriam.educademy.fragment.CarrerasSedeFragment">
 
+    <!-- TODO: Update blank fragment layout, add rcv carreras sede -->
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rcvListaSedes"
+        android:id="@+id/rcvCarrerasSede"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/fragmentBackground"/>
+        android:layout_height="match_parent"/>
 </FrameLayout>

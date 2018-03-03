@@ -12,10 +12,10 @@ import io.github.edgardobarriam.educademy.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NoticiasInstitucionFragment extends Fragment {
+public class NoticiasPlaceholderFragment extends Fragment {
 
 
-    public NoticiasInstitucionFragment() {
+    public NoticiasPlaceholderFragment() {
         // Required empty public constructor
     }
 

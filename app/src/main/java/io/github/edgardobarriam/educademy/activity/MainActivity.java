@@ -17,9 +17,9 @@ import android.widget.ListView;
 
 import io.github.edgardobarriam.educademy.R;
 import io.github.edgardobarriam.educademy.adapter.NavDrawerItemAdapter;
-import io.github.edgardobarriam.educademy.fragment.CarrerasFragment;
+import io.github.edgardobarriam.educademy.fragment.CarrerasMainFragment;
 import io.github.edgardobarriam.educademy.fragment.InicioFragment;
-import io.github.edgardobarriam.educademy.fragment.InstitucionesFragment;
+import io.github.edgardobarriam.educademy.fragment.InstitucionesMainFragment;
 import io.github.edgardobarriam.educademy.fragment.ListaInstitucionesFragment;
 import io.github.edgardobarriam.educademy.model.NavDrawerItemModel;
 
@@ -28,8 +28,8 @@ public class MainActivity
             AppCompatActivity
         implements
             InicioFragment.OnFragmentInteractionListener,
-            InstitucionesFragment.OnFragmentInteractionListener,
-            CarrerasFragment.OnFragmentInteractionListener,
+            InstitucionesMainFragment.OnFragmentInteractionListener,
+            CarrerasMainFragment.OnFragmentInteractionListener,
             ListaInstitucionesFragment.OnFragmentInteractionListener{
 
     private String[] navigationDrawerItemTitles;
@@ -126,10 +126,6 @@ public class MainActivity
         }
     }
 
-    @Override
-    public void onFragmentInteraction(String uri) {
-
-    }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
 
@@ -148,10 +144,10 @@ public class MainActivity
                 fragment = new InicioFragment();
                 break;
             case 1:
-                fragment = new InstitucionesFragment();
+                fragment = new InstitucionesMainFragment();
                 break;
             case 2:
-                fragment = new CarrerasFragment();
+                fragment = new CarrerasMainFragment();
                 break;
             case 3:
                 finish();
@@ -175,8 +171,5 @@ public class MainActivity
         }
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
 
-    }
 }

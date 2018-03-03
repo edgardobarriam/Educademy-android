@@ -52,4 +52,20 @@ public class FacultadesSede implements Parcelable{
             return new FacultadesSede[size];
         }
     };
+
+    public String getNombreFacultad() {
+        return nombreFacultad;
+    }
+
+    public void setNombreFacultad(String nombreFacultad) {
+        this.nombreFacultad = nombreFacultad;
+    }
+
+    public List<CarreraEspecifica> getCarrerasFacultad() {
+        return carrerasFacultad;
+    }
+
+    public void setCarrerasFacultad(List<CarreraEspecifica> carrerasFacultad) {
+        this.carrerasFacultad = carrerasFacultad;
+    }
 }

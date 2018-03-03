@@ -1,6 +1,7 @@
 package io.github.edgardobarriam.educademy.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,10 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.List;
-
 import io.github.edgardobarriam.educademy.R;
-import io.github.edgardobarriam.educademy.adapter.SedesRecyclerAdapter;
+import io.github.edgardobarriam.educademy.activity.SedeActivity;
+import io.github.edgardobarriam.educademy.adapter.SedesInstitucionRecyclerAdapter;
 import io.github.edgardobarriam.educademy.model.Institucion;
 import io.github.edgardobarriam.educademy.model.SedeInstitucion;
 
@@ -52,10 +52,12 @@ public class SedesInstitucionFragment extends Fragment {
         rcvListaSedes = view.findViewById(R.id.rcvListaSedes);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         rcvListaSedes.setLayoutManager(linearLayoutManager);
-        rcvListaSedes.setAdapter(new SedesRecyclerAdapter(institucion.getSedesInstitucion(), new SedesRecyclerAdapter.OnItemClickListener() {
+        rcvListaSedes.setAdapter(new SedesInstitucionRecyclerAdapter(institucion.getSedesInstitucion(), new SedesInstitucionRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(SedeInstitucion item) {
-                // Iniciar activity de la sede con item
+                Intent intent = new Intent(getContext(), SedeActivity.class);
+                intent.putExtra("Sede", item);
+                startActivity(intent);
             }
         }));
 
@@ -66,7 +68,5 @@ public class SedesInstitucionFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
-        //TODO: Init sedes recyclerview
     }
 }

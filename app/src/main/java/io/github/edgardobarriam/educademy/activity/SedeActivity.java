@@ -8,72 +8,53 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.github.edgardobarriam.educademy.R;
-import io.github.edgardobarriam.educademy.fragment.SedesInstitucionFragment;
-import io.github.edgardobarriam.educademy.fragment.ResumenInstitucionFragment;
+import io.github.edgardobarriam.educademy.fragment.CarrerasSedeFragment;
 import io.github.edgardobarriam.educademy.fragment.NoticiasPlaceholderFragment;
-import io.github.edgardobarriam.educademy.model.Institucion;
+import io.github.edgardobarriam.educademy.model.SedeInstitucion;
 
-public class FichaInstitucionActivity extends AppCompatActivity {
+public class SedeActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private ImageView imgLogoInstitucion;
-    private TextView txtNombreInstitucion;
 
+    private SedeInstitucion sede;
 
-    private Institucion institucion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ficha_institucion);
+        setContentView(R.layout.activity_sede);
+        sede = getIntent().getParcelableExtra("Sede");
 
-        institucion = getIntent().getParcelableExtra("Institucion");
-        imgLogoInstitucion = findViewById(R.id.imvLogoInstitucionFicha);
-        txtNombreInstitucion = findViewById(R.id.txvNombreInstitucionFicha);
-        initInstitucionData();
         initToolbar();
         initViewPager();
-
-    }
-
-    private void initInstitucionData() {
-        Picasso.with(FichaInstitucionActivity.this).load(institucion.getUrlLogoInstitucion()).into(imgLogoInstitucion);
-        txtNombreInstitucion.setText(institucion.getNombreInstitucion());
     }
 
     private void initToolbar() {
-        toolbar = findViewById(R.id.toolbarFichaInstitucion);
+        toolbar = findViewById(R.id.sedeToolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        setTitle(institucion.getNombreCortoInstitucion());
+        setTitle(sede.getNombreSede());
     }
 
     private void initViewPager() {
-        viewPager = findViewById(R.id.viewPagerInstitucion);
+        viewPager = findViewById(R.id.viewPagerContenidoSede);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(ResumenInstitucionFragment.newInstance(institucion), "Resumen");
+        adapter.addFragment(CarrerasSedeFragment.newInstance(sede), "Carreras");
         adapter.addFragment(new NoticiasPlaceholderFragment(), "Noticias");
-        adapter.addFragment(SedesInstitucionFragment.newInstance(institucion), "Sedes");
         viewPager.setAdapter(adapter);
-
         initTabLayout();
     }
 
     private void initTabLayout() {
-        tabLayout = findViewById(R.id.tabsSeccionesInstitucion);
+        tabLayout = findViewById(R.id.tabsSeccionesSede);
         tabLayout.setupWithViewPager(viewPager);
     }
-
 
 
 
@@ -111,4 +92,5 @@ public class FichaInstitucionActivity extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
     }
+
 }

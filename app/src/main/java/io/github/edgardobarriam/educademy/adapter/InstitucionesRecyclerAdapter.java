@@ -33,7 +33,7 @@ public class InstitucionesRecyclerAdapter  extends RecyclerView.Adapter<Instituc
 
     @Override
     public InstitucionViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.instituciones_recycler_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item_instituciones, parent, false);
         return new InstitucionViewHolder(view);
     }
 

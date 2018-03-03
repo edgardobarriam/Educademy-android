@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context="io.github.edgardobarriam.educademy.fragment.InicioFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
 
     <android.support.constraint.ConstraintLayout

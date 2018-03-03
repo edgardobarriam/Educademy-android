@@ -11,8 +11,6 @@
     <!--Images descriptions-->
     <string name="navdrawer_item_icon">navDrawer_item_icon</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="universidades">Universidades</string>
     <string name="institutos_profesionales">Institutos Profesionales</string>
     <string name="cfts">Centros de Formación Técnica</string>

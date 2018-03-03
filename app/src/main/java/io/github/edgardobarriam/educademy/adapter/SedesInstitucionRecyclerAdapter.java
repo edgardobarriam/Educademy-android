@@ -16,18 +16,18 @@ import io.github.edgardobarriam.educademy.model.SedeInstitucion;
  * Created by edgar on 02-03-2018.
  */
 
-public class SedesRecyclerAdapter  extends RecyclerView.Adapter<SedesRecyclerAdapter.SedeViewHolder>{
+public class SedesInstitucionRecyclerAdapter extends RecyclerView.Adapter<SedesInstitucionRecyclerAdapter.SedeViewHolder>{
     private final List<SedeInstitucion> listaSedes;
     private final OnItemClickListener onItemClickListener;
 
-    public SedesRecyclerAdapter(List<SedeInstitucion> listaSedes, OnItemClickListener onItemClickListener) {
+    public SedesInstitucionRecyclerAdapter(List<SedeInstitucion> listaSedes, OnItemClickListener onItemClickListener) {
         this.listaSedes = listaSedes;
         this.onItemClickListener = onItemClickListener;
     }
 
     @Override
     public SedeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sedes_recycler_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item_sede_institucion, parent, false);
         return new SedeViewHolder(view);
     }
 
