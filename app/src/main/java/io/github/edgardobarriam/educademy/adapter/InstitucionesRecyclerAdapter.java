@@ -1,9 +1,6 @@
 package io.github.edgardobarriam.educademy.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 
 import java.util.List;
 
@@ -43,7 +39,7 @@ public class InstitucionesRecyclerAdapter  extends RecyclerView.Adapter<Instituc
 
     @Override
     public void onBindViewHolder(final InstitucionViewHolder holder, int position) {
-        final Institucion institucionBindeada = listaInstituciones.get(position);
+        Institucion institucionBindeada = listaInstituciones.get(position);
 
         // Render Logo
         Picasso.with(context).load(institucionBindeada.getUrlLogoInstitucion()).into(holder.logoInstitucion);

@@ -55,9 +55,8 @@ public class FichaInstitucionActivity extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(ResumenInstitucionFragment.newInstance(institucion), "Resumen");
         adapter.addFragment(new NoticiasInstitucionFragment(), "Noticias");
-        adapter.addFragment(new SedesInstitucionFragment(), "Sedes");
+        adapter.addFragment(SedesInstitucionFragment.newInstance(institucion), "Sedes");
         viewPager.setAdapter(adapter);
-
 
         initTabLayout();
     }

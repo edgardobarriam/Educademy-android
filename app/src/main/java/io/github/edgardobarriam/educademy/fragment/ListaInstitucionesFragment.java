@@ -102,8 +102,6 @@ public class ListaInstitucionesFragment extends Fragment {
             public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
             }
         });
-        /*initSampleData();
-        initAdapter();*/
         return view;
     }
 
