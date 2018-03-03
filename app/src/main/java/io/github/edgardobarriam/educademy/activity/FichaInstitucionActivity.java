@@ -13,15 +13,13 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import io.github.edgardobarriam.educademy.R;
-import io.github.edgardobarriam.educademy.fragment.CarrerasInstitucionFragment;
-import io.github.edgardobarriam.educademy.fragment.ResumenInstitucionFragment;
 import io.github.edgardobarriam.educademy.fragment.SedesInstitucionFragment;
+import io.github.edgardobarriam.educademy.fragment.ResumenInstitucionFragment;
+import io.github.edgardobarriam.educademy.fragment.NoticiasInstitucionFragment;
 import io.github.edgardobarriam.educademy.model.Institucion;
 
 public class FichaInstitucionActivity extends AppCompatActivity {
@@ -50,15 +48,14 @@ public class FichaInstitucionActivity extends AppCompatActivity {
     private void initInstitucionData() {
         Picasso.with(FichaInstitucionActivity.this).load(institucion.getUrlLogoInstitucion()).into(imgLogoInstitucion);
         txtNombreInstitucion.setText(institucion.getNombreInstitucion());
-        // txtNombreCortoInstitucion.setText(institucion.getNombreCortoInstitucion());
     }
 
     private void initViewPager() {
         viewPager = findViewById(R.id.viewPagerInstitucion);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new ResumenInstitucionFragment(), "Resumen");
+        adapter.addFragment(ResumenInstitucionFragment.newInstance(institucion), "Resumen");
+        adapter.addFragment(new NoticiasInstitucionFragment(), "Noticias");
         adapter.addFragment(new SedesInstitucionFragment(), "Sedes");
-        adapter.addFragment(new CarrerasInstitucionFragment(), "Carreras");
         viewPager.setAdapter(adapter);
 
 

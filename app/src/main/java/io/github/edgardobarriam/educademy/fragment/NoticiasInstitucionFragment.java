@@ -12,10 +12,10 @@ import io.github.edgardobarriam.educademy.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CarrerasInstitucionFragment extends Fragment {
+public class NoticiasInstitucionFragment extends Fragment {
 
 
-    public CarrerasInstitucionFragment() {
+    public NoticiasInstitucionFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class CarrerasInstitucionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_carreras_institucion, container, false);
+        return inflater.inflate(R.layout.fragment_sedes_institucion, container, false);
     }
 
 }
