@@ -59,11 +59,11 @@ public class ResumenInstitucionFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        txvInfoNombreInstitucion = getView().findViewById(R.id.txvInfoNombreInstitucion);
-        txvInfoTipoInstitucion = getView().findViewById(R.id.txvInfoTipoInstitucion);
-        txvInfoTipoPerfil = getView().findViewById(R.id.txvInfoTipoPerfil);
-        txvInfoRanking = getView().findViewById(R.id.txvInfoRanking);
-        txvInfoAcreditada = getView().findViewById(R.id.txvInfoAcreditada);
+        txvInfoNombreInstitucion = view.findViewById(R.id.txvInfoNombreInstitucion);
+        txvInfoTipoInstitucion = view.findViewById(R.id.txvInfoTipoInstitucion);
+        txvInfoTipoPerfil = view.findViewById(R.id.txvInfoTipoPerfil);
+        txvInfoRanking = view.findViewById(R.id.txvInfoRanking);
+        txvInfoAcreditada = view.findViewById(R.id.txvInfoAcreditada);
 
         txvInfoNombreInstitucion.setText(institucion.getNombreInstitucion());
         txvInfoTipoInstitucion.setText(institucion.getGradoInstitucion());
