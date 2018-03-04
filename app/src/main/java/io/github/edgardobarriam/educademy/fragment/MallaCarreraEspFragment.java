@@ -2,13 +2,18 @@ package io.github.edgardobarriam.educademy.fragment;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import io.github.edgardobarriam.educademy.R;
 import io.github.edgardobarriam.educademy.model.CarreraEspecifica;
+import io.github.edgardobarriam.educademy.model.Semestre;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,7 +26,7 @@ public class MallaCarreraEspFragment extends Fragment {
 
     private CarreraEspecifica carreraEspecifica;
 
-
+    private TextView txvRamosCarrera;
 
     public MallaCarreraEspFragment() {
         // Required empty public constructor
@@ -58,4 +63,18 @@ public class MallaCarreraEspFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_malla_carrera_esp, container, false);
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        txvRamosCarrera = view.findViewById(R.id.txvRamosCarrera);
+
+        ArrayList<Semestre> semestresCarrera = (ArrayList<Semestre>) carreraEspecifica.getSemestresCarreraEsp();
+
+        for(Semestre semestre : semestresCarrera) {
+            for(String ramo : semestre.getRamosSemestre()) {
+                txvRamosCarrera.append("\n •" + ramo + "\n");
+            }
+        }
+
+    }
 }
