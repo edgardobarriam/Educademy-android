@@ -27,7 +27,8 @@
         <activity
             android:name=".activity.FichaInstitucionActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.SedeActivity"></activity>
+        <activity android:name=".activity.SedeActivity" />
+        <activity android:name=".activity.FichaCarreraEspActivity"></activity>
     </application>
 
 </manifest>

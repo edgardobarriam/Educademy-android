@@ -1,6 +1,7 @@
 package io.github.edgardobarriam.educademy.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.github.edgardobarriam.educademy.R;
+import io.github.edgardobarriam.educademy.activity.FichaCarreraEspActivity;
 import io.github.edgardobarriam.educademy.adapter.CarrerasSedeRecyclerAdapter;
 import io.github.edgardobarriam.educademy.model.CarreraEspecifica;
 import io.github.edgardobarriam.educademy.model.FacultadesSede;
@@ -73,7 +75,9 @@ public class CarrerasSedeFragment extends Fragment {
         rcvCarrerasSede.setAdapter(new CarrerasSedeRecyclerAdapter(allCarrerasSede, new CarrerasSedeRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(CarreraEspecifica item) {
-
+                Intent intent = new Intent(getContext(), FichaCarreraEspActivity.class);
+                intent.putExtra("CarreraEsp", item);
+                startActivity(intent);
             }
         }));
         return view;

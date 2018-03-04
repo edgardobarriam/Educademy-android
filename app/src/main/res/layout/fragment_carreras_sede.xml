@@ -4,8 +4,6 @@
     android:layout_height="match_parent"
     tools:context="io.github.edgardobarriam.educademy.fragment.CarrerasSedeFragment">
 
-    <!-- TODO: Update blank fragment layout, add rcv carreras sede -->
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rcvCarrerasSede"
         android:layout_width="match_parent"
