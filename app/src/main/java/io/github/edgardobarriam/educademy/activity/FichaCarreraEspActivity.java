@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.github.edgardobarriam.educademy.R;
+import io.github.edgardobarriam.educademy.fragment.MallaCarreraEspFragment;
 import io.github.edgardobarriam.educademy.fragment.ResumenCarreraEspFragment;
 import io.github.edgardobarriam.educademy.model.CarreraEspecifica;
 
@@ -53,6 +54,7 @@ public class FichaCarreraEspActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewPagerCarreraEsp);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(ResumenCarreraEspFragment.newInstance(carreraEspecifica), "Resumen");
+        adapter.addFragment(MallaCarreraEspFragment.newInstance(carreraEspecifica), "Malla");
         viewPager.setAdapter(adapter);
         initTabLayout();
     }
@@ -64,6 +66,12 @@ public class FichaCarreraEspActivity extends AppCompatActivity {
 
     private void initData() {
         txvTituloCarreraEsp.setText(carreraEspecifica.getNombreCarreraEsp());
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {

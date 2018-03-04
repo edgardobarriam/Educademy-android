@@ -23,6 +23,7 @@ public class ResumenCarreraEspFragment extends Fragment {
     private static final String CARRERA_ESP = "carreraEsp";
     private CarreraEspecifica carreraEspecifica;
 
+    private TextView txvDescCarreraEsp;
     private TextView txvAreaConocCarreraEsp;
     private TextView txvJornadaCarreraEsp;
     private TextView txvModalidadCarreraEsp;
@@ -80,6 +81,7 @@ public class ResumenCarreraEspFragment extends Fragment {
     }
 
     private void initView(View view) {
+        txvDescCarreraEsp = view.findViewById(R.id.txvDescCarreraEsp);
         txvAreaConocCarreraEsp = view.findViewById(R.id.txvAreaConocCarreraEsp);
         txvJornadaCarreraEsp = view.findViewById(R.id.txvJornadaCarreraEsp);
         txvModalidadCarreraEsp = view.findViewById(R.id.txvModalidadCarreraEsp);
@@ -97,6 +99,7 @@ public class ResumenCarreraEspFragment extends Fragment {
     }
 
     private void initData() {
+        txvDescCarreraEsp.setText(carreraEspecifica.getDescCarreraEsp());
         txvAreaConocCarreraEsp.setText(carreraEspecifica.getAreaConocimientoCarreraEsp());
         txvJornadaCarreraEsp.setText(carreraEspecifica.getJornadaCarreraEsp());
         txvModalidadCarreraEsp.setText(carreraEspecifica.getModalidadCarreraEsp());
