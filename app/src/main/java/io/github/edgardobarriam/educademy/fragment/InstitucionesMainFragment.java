@@ -17,8 +17,6 @@ import io.github.edgardobarriam.educademy.R;
  * Activities that contain this fragment must implement the
  * {@link InstitucionesMainFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link InstitucionesMainFragment#newInstance} factory method to
- * create an instance of this fragment.
  */
 public class InstitucionesMainFragment extends Fragment {
 

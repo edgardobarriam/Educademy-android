@@ -38,6 +38,7 @@ public class ResumenCarreraEspFragment extends Fragment {
     private TextView txvHisPsuCarreraEsp;
     private TextView txvNemPsuCarreraEsp;
     private TextView txvRanPsuCarreraEsp;
+    private TextView txvAcreditadaCarreraEsp;
 
     public ResumenCarreraEspFragment() {
         // Required empty public constructor
@@ -96,6 +97,7 @@ public class ResumenCarreraEspFragment extends Fragment {
         txvHisPsuCarreraEsp = view.findViewById(R.id.txvHisPsuCarreraEsp);
         txvNemPsuCarreraEsp = view.findViewById(R.id.txvNemPsuCarreraEsp);
         txvRanPsuCarreraEsp = view.findViewById(R.id.txvRanPsuCarreraEsp);
+        txvAcreditadaCarreraEsp = view.findViewById(R.id.txvAcreditadaCarreraEsp);
     }
 
     private void initData() {
@@ -114,5 +116,6 @@ public class ResumenCarreraEspFragment extends Fragment {
         txvHisPsuCarreraEsp.setText(carreraEspecifica.getHisPsuCarreraEsp());
         txvNemPsuCarreraEsp.setText(carreraEspecifica.getNemPsuCarreraEsp());
         txvRanPsuCarreraEsp.setText(carreraEspecifica.getRanPsuCarreraEsp());
+        txvAcreditadaCarreraEsp.setText(carreraEspecifica.getAcreditadaCarreraEsp() ? "Si" : "No");
     }
 }

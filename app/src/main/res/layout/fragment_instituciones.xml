@@ -32,11 +32,11 @@
                     android:id="@+id/imvUniversidades"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
+                    android:alpha=".75"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_carreras"
-                    android:alpha=".75"/>
+                    app:srcCompat="@drawable/ic_carreras" />
 
                 <TextView
                     android:id="@+id/txtUniversidades"
