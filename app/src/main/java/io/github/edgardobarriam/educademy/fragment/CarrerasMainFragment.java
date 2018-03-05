@@ -1,9 +1,13 @@
 package io.github.edgardobarriam.educademy.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +25,7 @@ import io.github.edgardobarriam.educademy.R;
  */
 public class CarrerasMainFragment extends Fragment {
 
-
+    private CardView crvTecnologia;
     private OnFragmentInteractionListener mListener;
 
     public CarrerasMainFragment() {
@@ -52,6 +56,25 @@ public class CarrerasMainFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_carreras, container, false);
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initViews(view);
+    }
+
+    private void initViews(View view) {
+        crvTecnologia = view.findViewById(R.id.crvTecnologia);
+        crvTecnologia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ListaCarrerasFragment fragment = ListaCarrerasFragment.newInstance("tecnologia");
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.content_container,fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+    }
 
     @Override
     public void onAttach(Context context) {
