@@ -83,6 +83,7 @@ public class ListaInstitucionesFragment extends Fragment {
 
         Call<ApiResponse> call = apiService.getInstituciones(strTipoInstituciones);
         call.enqueue(new Callback<ApiResponse>() {
+            @SuppressWarnings("ConstantConditions")
             @Override
             public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
 

@@ -76,7 +76,7 @@ public class CarrerasSedeFragment extends Fragment {
             @Override
             public void onItemClick(CarreraEspecifica item) {
                 Intent intent = new Intent(getContext(), FichaCarreraEspActivity.class);
-                intent.putExtra("CarreraEsp", item);
+                intent.putExtra(FichaCarreraEspActivity.CARRERA_ESPECIFICA, item);
                 startActivity(intent);
             }
         }));

@@ -19,6 +19,8 @@ import io.github.edgardobarriam.educademy.fragment.ResumenCarreraEspFragment;
 import io.github.edgardobarriam.educademy.model.CarreraEspecifica;
 
 public class FichaCarreraEspActivity extends AppCompatActivity {
+    public static final String CARRERA_ESPECIFICA = "CarreraEsp";
+
     private CarreraEspecifica carreraEspecifica;
 
     private TextView txvTituloCarreraEsp;
@@ -30,7 +32,7 @@ public class FichaCarreraEspActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ficha_carrera_esp);
-        carreraEspecifica = getIntent().getParcelableExtra("CarreraEsp");
+        carreraEspecifica = getIntent().getParcelableExtra(CARRERA_ESPECIFICA);
 
         initToolbar();
         initView();
@@ -46,10 +48,17 @@ public class FichaCarreraEspActivity extends AppCompatActivity {
         setTitle(carreraEspecifica.getAreaConocimientoCarreraEsp());
     }
 
+    /**
+     * Initializes the activity views.
+     */
+    //TODO
     private void initView() {
         txvTituloCarreraEsp = findViewById(R.id.txvTituloCarreraEsp);
     }
 
+    /**
+     * Initializes the activity View Pager and adds the corresponding fragments into it.
+     */
     private void initViewPager() {
         viewPager = findViewById(R.id.viewPagerCarreraEsp);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
@@ -59,11 +68,17 @@ public class FichaCarreraEspActivity extends AppCompatActivity {
         initTabLayout();
     }
 
+    /**
+     * Initializes the Tab Layout related to the activity View Pager
+     */
     private void initTabLayout() {
         tabLayout = findViewById(R.id.tabsSeccionesCarreraEsp);
         tabLayout.setupWithViewPager(viewPager);
     }
 
+    /**
+     * Initializes the activity data from Carrera Específica.
+     */
     private void initData() {
         txvTituloCarreraEsp.setText(carreraEspecifica.getNombreCarreraEsp());
     }
